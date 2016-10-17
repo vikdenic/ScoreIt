@@ -13,6 +13,7 @@
 		9399D6D11DB50E6A00F46EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9399D6D01DB50E6A00F46EC0 /* Assets.xcassets */; };
 		9399D6D41DB50E6A00F46EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9399D6D21DB50E6A00F46EC0 /* LaunchScreen.storyboard */; };
 		9399D6DC1DB51BB200F46EC0 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9399D6DB1DB51BB200F46EC0 /* Keys.plist */; };
+		9399D6DE1DB553F500F46EC0 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399D6DD1DB553F500F46EC0 /* GameTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9399D6D31DB50E6A00F46EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9399D6D51DB50E6A00F46EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9399D6DB1DB51BB200F46EC0 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		9399D6DD1DB553F500F46EC0 /* GameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				9399D6C91DB50E6A00F46EC0 /* AppDelegate.swift */,
 				9399D6CB1DB50E6A00F46EC0 /* ViewController.swift */,
+				9399D6DD1DB553F500F46EC0 /* GameTableViewCell.swift */,
 				9399D6CD1DB50E6A00F46EC0 /* Main.storyboard */,
 				9399D6D01DB50E6A00F46EC0 /* Assets.xcassets */,
 				9399D6D21DB50E6A00F46EC0 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 			files = (
 				9399D6CC1DB50E6A00F46EC0 /* ViewController.swift in Sources */,
 				9399D6CA1DB50E6A00F46EC0 /* AppDelegate.swift in Sources */,
+				9399D6DE1DB553F500F46EC0 /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
