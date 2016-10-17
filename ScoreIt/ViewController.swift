@@ -21,11 +21,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 100, right: 0)
+
         retrieveGameData()
     }
 
     func retrieveGameData() {
-        SportsData.games(forDate: "2016-OCT-18") { (games, error) in
+        SportsData.games(forDate: "2016-OCT-16") { (games, error) in
             guard let games = games else {
                 print(error)
                 return
