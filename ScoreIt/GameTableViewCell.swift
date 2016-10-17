@@ -30,10 +30,14 @@ class GameTableViewCell: UITableViewCell {
 
         if let homeScore = game.homeScore {
             homeScoreLabel.text = "\(homeScore)"
+        } else {
+            homeScoreLabel.text = ""
         }
 
         if let awayScore = game.awayScore {
             awayScoreLabel.text = "\(awayScore)"
+        } else {
+            awayScoreLabel.text = ""
         }
 
         if let spread = game.spread {

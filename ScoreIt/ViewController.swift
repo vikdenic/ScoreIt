@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var dateLabel: UILabel!
+    let refreshControl = UIRefreshControl()
+
     var date = NSDate() {
         didSet {
             updateDateLabel()
@@ -31,6 +33,7 @@ class ViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 100, right: 0)
 
+        refreshSetUp()
         updateDateLabel()
         retrieveGameData()
     }
@@ -39,8 +42,15 @@ class ViewController: UIViewController {
         dateLabel.text = date.toDayString()
     }
 
+    func refreshSetUp() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(retrieveGameData), for: .valueChanged)
+        tableView.addSubview(refreshControl) // not required when using UITableViewController
+    }
+
     func retrieveGameData() {
         SportsData.games(forDate: date.toAPIString()) { (games, error) in
+            self.refreshControl.endRefreshing()
             guard let games = games else {
                 print(error)
                 return
