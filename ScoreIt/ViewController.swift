@@ -11,9 +11,17 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var dateLabel: UILabel!
+    var date = NSDate() {
+        didSet {
+            updateDateLabel()
+            retrieveGameData()
+        }
+    }
 
     var games = [Game]() {
         didSet {
+            self.updateDateLabel()
             tableView.reloadData()
         }
     }
@@ -21,13 +29,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 100, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 100, right: 0)
 
+        updateDateLabel()
         retrieveGameData()
     }
 
+    func updateDateLabel() {
+        dateLabel.text = date.toDayString()
+    }
+
     func retrieveGameData() {
-        SportsData.games(forDate: "2016-OCT-16") { (games, error) in
+        SportsData.games(forDate: date.toAPIString()) { (games, error) in
             guard let games = games else {
                 print(error)
                 return
@@ -36,6 +49,13 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func onPreviousTapped(_ sender: UIButton) {
+        date = date.yesterday()
+    }
+
+    @IBAction func onNextTapped(_ sender: UIButton) {
+        date = date.tomorrow()
+    }
 }
 
 extension ViewController: UITableViewDataSource {
@@ -68,7 +88,6 @@ class SportsData {
 
         let string = params.componentsJoined(by: "&")
         path = path.appendingFormat("?%@", string)
-        print(path)
 
         let session = URLSession(configuration: URLSessionConfiguration.default)
 
@@ -86,9 +105,9 @@ class SportsData {
                         print(dict)
                         let game = Game(dict: dict)
                         games.append(game)
-                        DispatchQueue.main.async {
-                            complete(games, error)
-                        }
+                    }
+                    DispatchQueue.main.async {
+                        complete(games, error)
                     }
                 }
             } catch {
@@ -120,12 +139,33 @@ class Game {
 }
 
 extension NSDate {
-    func toAbbrevString() -> String {
+    func toGameString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd, h:mm a"
         let localTZ = NSTimeZone.local
         formatter.timeZone = localTZ
         return formatter.string(from: self as Date)
+    }
+
+    func toDayString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
+        let localTZ = NSTimeZone.local
+        formatter.timeZone = localTZ
+        return formatter.string(from: self as Date)
+    }
+    func toAPIString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MMM-dd"
+        let localTZ = NSTimeZone.local
+        formatter.timeZone = localTZ
+        return formatter.string(from: self as Date)
+    }
+    func yesterday() -> NSDate {
+        return NSCalendar.current.date(byAdding: .day, value: -1, to: self as Date)! as NSDate
+    }
+    func tomorrow() -> NSDate {
+        return NSCalendar.current.date(byAdding: .day, value: 1, to: self as Date)! as NSDate
     }
 }
 

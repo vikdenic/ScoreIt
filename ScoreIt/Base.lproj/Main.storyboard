@@ -21,9 +21,54 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="36I-sL-m1b">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="nau-hB-TXE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="na6-db-Ar9">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="VK7-CS-c0h"/>
+                                            </constraints>
+                                            <state key="normal" title="Next">
+                                                <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onNextTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nbu-Wa-eJ9"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRg-Ff-6ki">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="NA8-6T-UH1"/>
+                                            </constraints>
+                                            <state key="normal" title="Previous">
+                                                <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onPreviousTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ikr-lr-ZdH"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-Dv-pFt">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="gx4-Lf-sOd"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="na6-db-Ar9" secondAttribute="trailing" constant="15" id="0Ll-jt-i6a"/>
+                                        <constraint firstItem="nlc-Dv-pFt" firstAttribute="centerY" secondItem="nau-hB-TXE" secondAttribute="centerY" id="36E-DL-KJF"/>
+                                        <constraint firstItem="RRg-Ff-6ki" firstAttribute="leading" secondItem="nau-hB-TXE" secondAttribute="leading" constant="15" id="3Tp-a6-FSH"/>
+                                        <constraint firstItem="na6-db-Ar9" firstAttribute="centerY" secondItem="nau-hB-TXE" secondAttribute="centerY" id="PGz-LP-RSV"/>
+                                        <constraint firstItem="nlc-Dv-pFt" firstAttribute="centerX" secondItem="nau-hB-TXE" secondAttribute="centerX" id="Q5t-wW-LKb"/>
+                                        <constraint firstItem="RRg-Ff-6ki" firstAttribute="centerY" secondItem="nau-hB-TXE" secondAttribute="centerY" id="SZQ-ay-DLh"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameCell" rowHeight="90" id="u5g-OR-k4J" customClass="GameTableViewCell" customModule="ScoreIt" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="73" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u5g-OR-k4J" id="Iav-jz-5SI">
                                             <frame key="frameInset" width="375" height="89.5"/>
@@ -122,11 +167,12 @@
                         <constraints>
                             <constraint firstItem="36I-sL-m1b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Gq-RW-d6A"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="36I-sL-m1b" secondAttribute="bottom" id="ZUy-Ta-FIX"/>
-                            <constraint firstItem="36I-sL-m1b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="pD5-w9-QNR"/>
+                            <constraint firstItem="36I-sL-m1b" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="pD5-w9-QNR"/>
                             <constraint firstAttribute="trailing" secondItem="36I-sL-m1b" secondAttribute="trailing" id="ylk-3h-J2R"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="nlc-Dv-pFt" id="e0R-FQ-vGR"/>
                         <outlet property="tableView" destination="36I-sL-m1b" id="41S-Hs-go9"/>
                     </connections>
                 </viewController>
