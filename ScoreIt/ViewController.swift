@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet var homeLabel: UILabel!
 
     let kMLBPrimaryKey = NSDictionary(contentsOfFile: Bundle.main.path(forResource: "Keys", ofType: "plist")!)?.object(forKey: "mlb_primary_key") as! String
+    let kGamesByDatePath = "https://api.fantasydata.net/mlb/v2/json/GamesByDate/2016-OCT-16"
+    let kSchedulesPath = "https://api.fantasydata.net/mlb/v2/json/Games/2016"
+    let kActiveTeamsPath = "https://api.fantasydata.net/mlb/v2/json/teams"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,7 @@ class ViewController: UIViewController {
 
     func getData() {
         //create path
-        var path = "https://api.fantasydata.net/mlb/v2/json/Games/2016" as NSString
+        var path = kGamesByDatePath as NSString
         let params = ["entities=true"] as NSArray
 
         let string = params.componentsJoined(by: "&")
@@ -37,71 +40,42 @@ class ViewController: UIViewController {
         request.setValue(kMLBPrimaryKey, forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
 
         let task: URLSessionDataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
-            if let data = data {
-                let response = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-                print(response)
-            }
+                do {
+                    if let data = data {
+                        let jsonArray = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [NSDictionary]
+                        for dict in jsonArray {
+                            print(dict)
+                            DispatchQueue.main.async {
+                                let game = Game(dict: dict)
+                                self.homeLabel.text = game.homeTeam! + " \(game.homeScore!)"
+                                self.awayLabel.text = game.awayTeam! + " \(game.awayScore!)"
+                            }
+                        }
+                    }
+                } catch {
+
+                }
         }
         task.resume()
     }
 
 
-
 }
 
-//int main(int argc, const char * argv[])
-//{
-//    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-//
-//    NSString* path = @"https://api.fantasydata.net/mlb/v2/{format}/teams";
-//    NSArray* array = @[
-//    // Request parameters
-//    @"entities=true",
-//    ];
-//
-//    NSString* string = [array componentsJoinedByString:@"&"];
-//    path = [path stringByAppendingFormat:@"?%@", string];
-//
-//    NSLog(@"%@", path);
-//
-//    NSMutableURLRequest* _request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path]];
-//    [_request setHTTPMethod:@"GET"];
-//    // Request headers
-//    [_request setValue:@"{subscription key}" forHTTPHeaderField:@"Ocp-Apim-Subscription-Key"];
-//    // Request body
-//    [_request setHTTPBody:[@"{body}" dataUsingEncoding:NSUTF8StringEncoding]];
-//
-//    NSURLResponse *response = nil;
-//    NSError *error = nil;
-//    NSData* _connectionData = [NSURLConnection sendSynchronousRequest:_request returningResponse:&response error:&error];
-//
-//    if (nil != error)
-//    {
-//        NSLog(@"Error: %@", error);
-//    }
-//    else
-//    {
-//        NSError* error = nil;
-//        NSMutableDictionary* json = nil;
-//        NSString* dataString = [[NSString alloc] initWithData:_connectionData encoding:NSUTF8StringEncoding];
-//        NSLog(@"%@", dataString);
-//
-//        if (nil != _connectionData)
-//        {
-//            json = [NSJSONSerialization JSONObjectWithData:_connectionData options:NSJSONReadingMutableContainers error:&error];
-//        }
-//
-//        if (error || !json)
-//        {
-//            NSLog(@"Could not parse loaded json with error:%@", error);
-//        }
-//
-//        NSLog(@"%@", json);
-//        _connectionData = nil;
-//    }
-//
-//    [pool drain];
-//
-//    return 0;
-//}
+class Game {
+    var homeTeam: String?
+    var awayTeam: String?
+    var homeScore: Int?
+    var awayScore: Int?
+    var spread: String?
+
+    init(dict: NSDictionary) {
+        self.homeTeam = dict["HomeTeam"] as? String
+        self.awayTeam = dict["AwayTeam"] as? String
+        self.homeScore = dict["HomeTeamRuns"] as? Int
+        self.awayScore = dict["AwayTeamRuns"] as? Int
+        self.spread = dict["PointSpread"] as? String
+    }
+
+}
 
