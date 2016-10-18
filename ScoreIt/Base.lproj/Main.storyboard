@@ -306,7 +306,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jll-8I-HZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="9"/>
+            <point key="canvasLocation" x="1860" y="12"/>
         </scene>
         <!--Team Selection View Controller-->
         <scene sceneID="oJa-DH-s2U">
@@ -369,14 +369,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b50-6e-WQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2328.8000000000002" y="3.1484257871064472"/>
+            <point key="canvasLocation" x="2582" y="16"/>
         </scene>
         <!--Scores-->
         <scene sceneID="EqU-Kv-TZq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fej-Mo-dgZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Scores" image="trophy" selectedImage="trophy" id="8sw-Zr-FsC">
-                        <inset key="imageInsets" minX="0.0" minY="4" maxX="0.0" maxY="-4"/>
+                        <inset key="imageInsets" minX="0.0" minY="3" maxX="0.0" maxY="-3"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M0s-1v-htq">
