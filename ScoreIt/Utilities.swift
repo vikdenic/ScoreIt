@@ -63,3 +63,13 @@ extension String {
         }
     }
 }
+
+extension Int {
+    func toBool() -> Bool {
+        if self == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
+}

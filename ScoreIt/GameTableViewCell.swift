@@ -90,10 +90,20 @@ class GameTableViewCell: UITableViewCell {
             awayScoreLabel.text = ""
         }
 
-        if game.status == "Finished" {
-            dateLabel.text = "Final"
+        if game.status == "InProgress" || game.status == "Finished" {
+            dateLabel.text = game.quarter
         } else {
             dateLabel.text = game.date?.toGameString()
+        }
+
+        if let spread = game.spread {
+            if spread < 0 {
+                spreadLabel.text = "\(game.homeTeam!) \(spread)"
+            } else {
+                spreadLabel.text = "\(game.homeTeam!) +\(spread)"
+            }
+        } else {
+            spreadLabel.text = ""
         }
     }
 

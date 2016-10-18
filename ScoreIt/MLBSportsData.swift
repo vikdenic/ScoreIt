@@ -143,8 +143,9 @@ class Game {
     var awayScore: Int?
     var spread: Float?
     var date: NSDate?
-    var status: String?
-    var inning : (inning: Int?, half: String?)?
+    var status: String? = "Scheduled" //mlb & nfl
+    var inning : (inning: Int?, half: String?)? //mlb
+    var quarter: String? //nfl
 
     init(dict: NSDictionary, sport: Sport) {
         self.homeTeam = dict["HomeTeam"] as? String
@@ -163,6 +164,11 @@ class Game {
             self.date = (dict["Date"] as? String)?.toDate()
             self.homeScore = dict["HomeScore"] as? Int
             self.awayScore = dict["AwayScore"] as? Int
+            self.quarter = dict["Quarter"] as? String
+
+            if dict["isInProgress"] as? Int == 1 {
+                self.status = "InProgress"
+            }
 
             if dict["IsOver"] as? Int == 1 {
                 self.status = "Finished"
