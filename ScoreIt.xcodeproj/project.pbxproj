@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		934C8B6F1DB66021006F64D7 /* MLBSportsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8B6E1DB66021006F64D7 /* MLBSportsData.swift */; };
+		934C8B711DB66050006F64D7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8B701DB66050006F64D7 /* Utilities.swift */; };
+		934C8B731DB6662D006F64D7 /* TeamSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8B721DB6662D006F64D7 /* TeamSelectionViewController.swift */; };
+		934C8B751DB66964006F64D7 /* TeamSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8B741DB66964006F64D7 /* TeamSelectionTableViewCell.swift */; };
+		934C8B791DB672CB006F64D7 /* NFLSportsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C8B781DB672CB006F64D7 /* NFLSportsData.swift */; };
 		93800BD71DB5864D00F39BAD /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93800BD61DB5864D00F39BAD /* FavoritesTableViewController.swift */; };
 		9399D6CA1DB50E6A00F46EC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399D6C91DB50E6A00F46EC0 /* AppDelegate.swift */; };
 		9399D6CC1DB50E6A00F46EC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399D6CB1DB50E6A00F46EC0 /* ViewController.swift */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		934C8B6E1DB66021006F64D7 /* MLBSportsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLBSportsData.swift; sourceTree = "<group>"; };
+		934C8B701DB66050006F64D7 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		934C8B721DB6662D006F64D7 /* TeamSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSelectionViewController.swift; sourceTree = "<group>"; };
+		934C8B741DB66964006F64D7 /* TeamSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		934C8B781DB672CB006F64D7 /* NFLSportsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFLSportsData.swift; sourceTree = "<group>"; };
 		93800BD61DB5864D00F39BAD /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		9399D6C61DB50E6A00F46EC0 /* ScoreIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9399D6C91DB50E6A00F46EC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +51,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		934C8B761DB6696A006F64D7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9399D6DD1DB553F500F46EC0 /* GameTableViewCell.swift */,
+				934C8B741DB66964006F64D7 /* TeamSelectionTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		934C8B771DB66971006F64D7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9399D6CB1DB50E6A00F46EC0 /* ViewController.swift */,
+				93800BD61DB5864D00F39BAD /* FavoritesTableViewController.swift */,
+				934C8B721DB6662D006F64D7 /* TeamSelectionViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		9399D6BD1DB50E6A00F46EC0 = {
 			isa = PBXGroup;
 			children = (
@@ -61,14 +90,16 @@
 			isa = PBXGroup;
 			children = (
 				9399D6C91DB50E6A00F46EC0 /* AppDelegate.swift */,
-				9399D6CB1DB50E6A00F46EC0 /* ViewController.swift */,
-				93800BD61DB5864D00F39BAD /* FavoritesTableViewController.swift */,
-				9399D6DD1DB553F500F46EC0 /* GameTableViewCell.swift */,
 				9399D6CD1DB50E6A00F46EC0 /* Main.storyboard */,
-				9399D6D01DB50E6A00F46EC0 /* Assets.xcassets */,
-				9399D6D21DB50E6A00F46EC0 /* LaunchScreen.storyboard */,
-				9399D6D51DB50E6A00F46EC0 /* Info.plist */,
+				934C8B771DB66971006F64D7 /* ViewControllers */,
+				934C8B761DB6696A006F64D7 /* Cells */,
+				934C8B6E1DB66021006F64D7 /* MLBSportsData.swift */,
+				934C8B781DB672CB006F64D7 /* NFLSportsData.swift */,
+				934C8B701DB66050006F64D7 /* Utilities.swift */,
 				9399D6DB1DB51BB200F46EC0 /* Keys.plist */,
+				9399D6D01DB50E6A00F46EC0 /* Assets.xcassets */,
+				9399D6D51DB50E6A00F46EC0 /* Info.plist */,
+				9399D6D21DB50E6A00F46EC0 /* LaunchScreen.storyboard */,
 			);
 			path = ScoreIt;
 			sourceTree = "<group>";
@@ -147,9 +178,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				934C8B711DB66050006F64D7 /* Utilities.swift in Sources */,
+				934C8B6F1DB66021006F64D7 /* MLBSportsData.swift in Sources */,
+				934C8B731DB6662D006F64D7 /* TeamSelectionViewController.swift in Sources */,
 				9399D6CC1DB50E6A00F46EC0 /* ViewController.swift in Sources */,
 				9399D6CA1DB50E6A00F46EC0 /* AppDelegate.swift in Sources */,
 				93800BD71DB5864D00F39BAD /* FavoritesTableViewController.swift in Sources */,
+				934C8B751DB66964006F64D7 /* TeamSelectionTableViewCell.swift in Sources */,
+				934C8B791DB672CB006F64D7 /* NFLSportsData.swift in Sources */,
 				9399D6DE1DB553F500F46EC0 /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
