@@ -174,6 +174,10 @@ class Game {
                 self.status = "Finished"
             }
 
+            if dict["Canceled"] as? Int == 1 {
+                self.status = "Canceled"
+            }
+
         default: ()
         }
     }
