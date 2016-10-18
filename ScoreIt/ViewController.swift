@@ -137,6 +137,7 @@ class Game {
     var spread: Float?
     var date: NSDate?
     var status: String?
+    var inning : (inning: Int?, half: String?)?
 
     init(dict: NSDictionary) {
         self.homeTeam = dict["HomeTeam"] as? String
@@ -146,6 +147,7 @@ class Game {
         self.spread = dict["PointSpread"] as? Float
         self.date = (dict["DateTime"] as? String)?.toDate()
         self.status = dict["Status"] as? String
+        self.inning = (dict["Inning"] as? Int, dict["InningHalf"] as? String)
     }
 
 }
@@ -191,7 +193,12 @@ extension String {
     }
 }
 
-enum GameStatus: String {
-    case scheduled
-    case final
+extension String {
+    func toHalfInning() -> String {
+        if self == "A" {
+            return "Top"
+        } else {
+            return "Bot"
+        }
+    }
 }

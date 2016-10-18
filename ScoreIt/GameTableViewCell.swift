@@ -28,10 +28,17 @@ class GameTableViewCell: UITableViewCell {
         awayLabel.text = game.awayTeam
 
         switch game.status! {
+        case "Scheduled":
+            dateLabel.text = game.date?.toGameString()
         case "Final":
             dateLabel.text = "Final"
+            if (game.inning?.inning)! > 9 {
+                dateLabel.text = "Final / \((game.inning?.inning)!)"
+            }
+        case "Postponed":
+            dateLabel.text = "Postponed"
         default:
-            dateLabel.text = game.date?.toGameString()
+            dateLabel.text = "\(game.inning!.half!.toHalfInning()) \(game.inning!.inning!)"
         }
 
         if let homeScore = game.homeScore {
