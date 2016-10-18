@@ -24,6 +24,16 @@ class GameTableViewCell: UITableViewCell {
     }
 
     func setUpCell() {
+        switch game.sport.rawValue {
+        case "mlb":
+            setUpMLBCell()
+        case "nfl":
+            setUpNFLCell()
+        default: ()
+        }
+    }
+
+    func setUpMLBCell() {
         homeLabel.text = game.homeTeam
         awayLabel.text = game.awayTeam
 
@@ -61,6 +71,29 @@ class GameTableViewCell: UITableViewCell {
             }
         } else {
             spreadLabel.text = ""
+        }
+    }
+
+    func setUpNFLCell() {
+        homeLabel.text = game.homeTeam
+        awayLabel.text = game.awayTeam
+
+        if let homeScore = game.homeScore {
+            homeScoreLabel.text = "\(homeScore)"
+        } else {
+            homeScoreLabel.text = ""
+        }
+
+        if let awayScore = game.awayScore {
+            awayScoreLabel.text = "\(awayScore)"
+        } else {
+            awayScoreLabel.text = ""
+        }
+
+        if game.status == "Finished" {
+            dateLabel.text = "Final"
+        } else {
+            dateLabel.text = game.date?.toGameString()
         }
     }
 

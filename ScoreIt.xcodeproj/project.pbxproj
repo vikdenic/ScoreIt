@@ -70,6 +70,15 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		934C8B7A1DB68240006F64D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				934C8B6E1DB66021006F64D7 /* MLBSportsData.swift */,
+				934C8B781DB672CB006F64D7 /* NFLSportsData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		9399D6BD1DB50E6A00F46EC0 = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +102,7 @@
 				9399D6CD1DB50E6A00F46EC0 /* Main.storyboard */,
 				934C8B771DB66971006F64D7 /* ViewControllers */,
 				934C8B761DB6696A006F64D7 /* Cells */,
-				934C8B6E1DB66021006F64D7 /* MLBSportsData.swift */,
-				934C8B781DB672CB006F64D7 /* NFLSportsData.swift */,
+				934C8B7A1DB68240006F64D7 /* Model */,
 				934C8B701DB66050006F64D7 /* Utilities.swift */,
 				9399D6DB1DB51BB200F46EC0 /* Keys.plist */,
 				9399D6D01DB50E6A00F46EC0 /* Assets.xcassets */,

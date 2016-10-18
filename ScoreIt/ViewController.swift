@@ -10,11 +10,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var dateLabel: UILabel!
     let refreshControl = UIRefreshControl()
 
+    var selectedSport: Sport = .mlb {
+        didSet {
+            updateDateLabel()
+            retrieveGameData()
+        }
+    }
+
     var date = NSDate() {
+        didSet {
+            updateDateLabel()
+            retrieveGameData()
+        }
+    }
+
+    var week = 7 as Int {
         didSet {
             updateDateLabel()
             retrieveGameData()
@@ -39,7 +54,13 @@ class ViewController: UIViewController {
     }
 
     func updateDateLabel() {
-        dateLabel.text = date.toDayString()
+        switch selectedSport.rawValue {
+        case "mlb":
+            dateLabel.text = date.toDayString()
+        case "nfl":
+            dateLabel.text = "Week " + String(week)
+        default: ()
+        }
     }
 
     func refreshSetUp() {
@@ -49,22 +70,57 @@ class ViewController: UIViewController {
     }
 
     func retrieveGameData() {
-        MLBSportsData.games(forDate: date.toAPIString()) { (games, error) in
-            self.refreshControl.endRefreshing()
-            guard let games = games else {
-                print(error)
-                return
+        switch selectedSport.rawValue {
+        case "mlb":
+            MLBSportsData.games(forDate: date.toAPIString()) { (games, error) in
+                self.refreshControl.endRefreshing()
+                guard let games = games else {
+                    print(error)
+                    return
+                }
+                self.games = games
             }
-            self.games = games
+        case "nfl":
+            NFLSportsData.games(forWeek: week, complete: { (games, error) in
+                self.refreshControl.endRefreshing()
+                guard let games = games else {
+                    print(error)
+                    return
+                }
+                self.games = games
+            })
+        default: ()
+        }
+    }
+
+    @IBAction func onSegmentTapped(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            selectedSport = .mlb
+        case 1:
+            selectedSport = .nfl
+        default: ()
         }
     }
 
     @IBAction func onPreviousTapped(_ sender: UIButton) {
-        date = date.yesterday()
+        switch selectedSport.rawValue {
+        case "mlb":
+            date = date.yesterday()
+        case "nfl":
+            week -= 1
+        default: ()
+        }
     }
 
     @IBAction func onNextTapped(_ sender: UIButton) {
-        date = date.tomorrow()
+        switch selectedSport.rawValue {
+        case "mlb":
+            date = date.tomorrow()
+        case "nfl":
+            week += 1
+        default: ()
+        }
     }
 }
 

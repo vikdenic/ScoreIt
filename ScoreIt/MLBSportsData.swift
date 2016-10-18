@@ -40,7 +40,8 @@ class MLBSportsData {
                     let jsonArray = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [NSDictionary]
                     var games = [Game]()
                     for dict in jsonArray {
-                        let game = Game(dict: dict)
+                        let game = Game(dict: dict, sport: .mlb)
+                        game.sport = .mlb
                         games.append(game)
                     }
                     DispatchQueue.main.async {
@@ -135,6 +136,7 @@ class MLBSportsData {
 }
 
 class Game {
+    var sport: Sport!
     var homeTeam: String?
     var awayTeam: String?
     var homeScore: Int?
@@ -144,15 +146,30 @@ class Game {
     var status: String?
     var inning : (inning: Int?, half: String?)?
 
-    init(dict: NSDictionary) {
+    init(dict: NSDictionary, sport: Sport) {
         self.homeTeam = dict["HomeTeam"] as? String
         self.awayTeam = dict["AwayTeam"] as? String
-        self.homeScore = dict["HomeTeamRuns"] as? Int
-        self.awayScore = dict["AwayTeamRuns"] as? Int
         self.spread = dict["PointSpread"] as? Float
-        self.date = (dict["DateTime"] as? String)?.toDate()
-        self.status = dict["Status"] as? String
-        self.inning = (dict["Inning"] as? Int, dict["InningHalf"] as? String)
+
+        //Sport-specific properties
+        switch sport.rawValue {
+        case "mlb":
+            self.date = (dict["DateTime"] as? String)?.toDate()
+            self.status = dict["Status"] as? String
+            self.homeScore = dict["HomeTeamRuns"] as? Int
+            self.awayScore = dict["AwayTeamRuns"] as? Int
+            self.inning = (dict["Inning"] as? Int, dict["InningHalf"] as? String)
+        case "nfl":
+            self.date = (dict["Date"] as? String)?.toDate()
+            self.homeScore = dict["HomeScore"] as? Int
+            self.awayScore = dict["AwayScore"] as? Int
+
+            if dict["IsOver"] as? Int == 1 {
+                self.status = "Finished"
+            }
+
+        default: ()
+        }
     }
     
 }

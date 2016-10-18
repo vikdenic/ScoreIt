@@ -12,6 +12,7 @@ let kNFLPrimaryKey = NSDictionary(contentsOfFile: Bundle.main.path(forResource: 
 
 let kNFLCurrentWeekPath = "https://api.fantasydata.net/v3/nfl/scores/json/CurrentWeek"
 let kNFLActiveTeamsPath = "https://api.fantasydata.net/v3/nfl/scores/json/Teams"
+let kNFLScoresByWeek = "https://api.fantasydata.net/v3/nfl/scores/json/ScoresByWeek/2016/"
 let kNFLStandingsPath = "https://api.fantasydata.net/v3/nfl/scores/json/Standings/2016"
 
 class NFLSportsData {
@@ -19,9 +20,9 @@ class NFLSportsData {
     ///
     /// - parameter date:     The date to retrieve games for, in the format: 2015-JUL-31
     /// - parameter complete: The completion block of the network call, returning games or an error
-    class func games(forDate date: String, complete : @escaping (_ games : [Game]?, _ error: Error?) -> Void) {
+    class func games(forWeek week: Int, complete : @escaping (_ games : [Game]?, _ error: Error?) -> Void) {
         //create path
-        var path = kNFLCurrentWeekPath + date
+        var path = kNFLScoresByWeek + String(week)
         let params = ["entities=true"] as NSArray
 
         let string = params.componentsJoined(by: "&")
@@ -38,14 +39,15 @@ class NFLSportsData {
             do {
                 if let data = data {
                     let jsonArray = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [NSDictionary]
-//                    var games = [Game]()
+                    var games = [Game]()
                     for dict in jsonArray {
                         print(dict)
-//                        let game = Game(dict: dict)
-//                        games.append(game)
+                        let game = Game(dict: dict, sport: .nfl)
+                        game.sport = .nfl
+                        games.append(game)
                     }
                     DispatchQueue.main.async {
-//                        complete(games, error)
+                        complete(games, error)
                     }
                 }
             } catch {

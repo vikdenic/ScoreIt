@@ -29,6 +29,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="VK7-CS-c0h"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                             <state key="normal" title="Next">
                                                 <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -40,6 +41,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="NA8-6T-UH1"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                             <state key="normal" title="Previous">
                                                 <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -181,10 +183,14 @@
                                 <segment title="NFL"/>
                             </segments>
                             <color key="tintColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="onSegmentTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="0Fx-yy-O4p"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="nlc-Dv-pFt" id="e0R-FQ-vGR"/>
+                        <outlet property="segmentedControl" destination="Iyl-w9-2dD" id="y88-sI-SOp"/>
                         <outlet property="tableView" destination="36I-sL-m1b" id="41S-Hs-go9"/>
                     </connections>
                 </viewController>
@@ -370,7 +376,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fej-Mo-dgZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Scores" image="trophy" selectedImage="trophy" id="8sw-Zr-FsC">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <inset key="imageInsets" minX="0.0" minY="4" maxX="0.0" maxY="-4"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M0s-1v-htq">
