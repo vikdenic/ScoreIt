@@ -26,7 +26,13 @@ class GameTableViewCell: UITableViewCell {
     func setUpCell() {
         homeLabel.text = game.homeTeam
         awayLabel.text = game.awayTeam
-        dateLabel.text = game.date?.toGameString()
+
+        switch game.status! {
+        case "Final":
+            dateLabel.text = "Final"
+        default:
+            dateLabel.text = game.date?.toGameString()
+        }
 
         if let homeScore = game.homeScore {
             homeScoreLabel.text = "\(homeScore)"

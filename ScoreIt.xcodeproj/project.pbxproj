@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93800BD71DB5864D00F39BAD /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93800BD61DB5864D00F39BAD /* FavoritesTableViewController.swift */; };
 		9399D6CA1DB50E6A00F46EC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399D6C91DB50E6A00F46EC0 /* AppDelegate.swift */; };
 		9399D6CC1DB50E6A00F46EC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399D6CB1DB50E6A00F46EC0 /* ViewController.swift */; };
 		9399D6CF1DB50E6A00F46EC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9399D6CD1DB50E6A00F46EC0 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93800BD61DB5864D00F39BAD /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		9399D6C61DB50E6A00F46EC0 /* ScoreIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9399D6C91DB50E6A00F46EC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9399D6CB1DB50E6A00F46EC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				9399D6C91DB50E6A00F46EC0 /* AppDelegate.swift */,
 				9399D6CB1DB50E6A00F46EC0 /* ViewController.swift */,
+				93800BD61DB5864D00F39BAD /* FavoritesTableViewController.swift */,
 				9399D6DD1DB553F500F46EC0 /* GameTableViewCell.swift */,
 				9399D6CD1DB50E6A00F46EC0 /* Main.storyboard */,
 				9399D6D01DB50E6A00F46EC0 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			files = (
 				9399D6CC1DB50E6A00F46EC0 /* ViewController.swift in Sources */,
 				9399D6CA1DB50E6A00F46EC0 /* AppDelegate.swift in Sources */,
+				93800BD71DB5864D00F39BAD /* FavoritesTableViewController.swift in Sources */,
 				9399D6DE1DB553F500F46EC0 /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +312,7 @@
 				9399D6DA1DB50E6A00F46EC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
