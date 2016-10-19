@@ -7,10 +7,25 @@
 //
 
 import Foundation
+import UIKit
 
 enum Sport: String {
     case mlb
     case nfl
+}
+
+extension UIColor {
+    class func winGreen() -> UIColor {
+        return UIColor(red: (9.0/255.0), green: (178.0/255.0), blue: (65.0/255.0), alpha: 1)
+    }
+
+    class func lossRed() -> UIColor {
+        return UIColor(red: (243.0/255.0), green: (48.0/255.0), blue: (12.0/255.0), alpha: 1)
+    }
+
+    class func customGrayText() -> UIColor {
+        return UIColor(red: (127.0/255.0), green: (127.0/255.0), blue: (127.0/255.0), alpha: 1)
+    }
 }
 
 extension NSDate {

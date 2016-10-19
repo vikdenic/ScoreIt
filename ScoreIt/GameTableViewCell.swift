@@ -33,6 +33,8 @@ class GameTableViewCell: UITableViewCell {
             setUpNFLCell()
         default: ()
         }
+        setUpSpreadLabel()
+        setUpWindicator()
     }
 
     func setUpMLBCell() {
@@ -64,26 +66,6 @@ class GameTableViewCell: UITableViewCell {
         } else {
             awayScoreLabel.text = ""
         }
-
-        if let spread = game.spread {
-            if spread < 0 {
-                spreadLabel.text = "\(game.homeTeam!) \(spread)"
-            } else {
-                spreadLabel.text = "\(game.homeTeam!) +\(spread)"
-            }
-        } else {
-            spreadLabel.text = ""
-        }
-
-        if game.status == "Final" {
-            if game.homeScore! > game.awayScore! {
-                homeWinIndicator.isHidden = false
-                awayWinIndicator.isHidden = true
-            } else if game.homeScore! < game.awayScore! {
-                homeWinIndicator.isHidden = true
-                awayWinIndicator.isHidden = false
-            }
-        }
     }
 
     func setUpNFLCell() {
@@ -107,25 +89,46 @@ class GameTableViewCell: UITableViewCell {
         } else {
             dateLabel.text = game.date?.toGameString()
         }
+    }
 
+    func setUpSpreadLabel() {
         if let spread = game.spread {
             if spread < 0 {
                 spreadLabel.text = "\(game.homeTeam!) \(spread)"
             } else {
                 spreadLabel.text = "\(game.homeTeam!) +\(spread)"
             }
+            if let homeScore = game.homeScore, let awayScore = game.awayScore {
+                if (Float(homeScore) + spread) > Float(awayScore) {
+                    spreadLabel.textColor = .winGreen()
+                } else if (Float(homeScore) + spread) < Float(awayScore) {
+                    spreadLabel.textColor = .lossRed()
+                } else {
+                    spreadLabel.textColor = .lightGray
+                }
+            } else {
+                spreadLabel.textColor = .lightGray
+            }
         } else {
             spreadLabel.text = ""
         }
+    }
 
-        if game.status == "Finished" {
+    func setUpWindicator() {
+        if game.status == "Finished" || game.status == "Final" {
             if game.homeScore! > game.awayScore! {
                 homeWinIndicator.isHidden = false
                 awayWinIndicator.isHidden = true
             } else if game.homeScore! < game.awayScore! {
                 homeWinIndicator.isHidden = true
                 awayWinIndicator.isHidden = false
+            } else {
+                homeWinIndicator.isHidden = true
+                awayWinIndicator.isHidden = true
             }
+        } else {
+            homeWinIndicator.isHidden = true
+            awayWinIndicator.isHidden = true
         }
     }
 
