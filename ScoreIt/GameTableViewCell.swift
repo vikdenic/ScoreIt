@@ -16,6 +16,8 @@ class GameTableViewCell: UITableViewCell {
     @IBOutlet var spreadLabel: UILabel!
     @IBOutlet var homeScoreLabel: UILabel!
     @IBOutlet var awayScoreLabel: UILabel!
+    @IBOutlet var homeWinIndicator: UIImageView!
+    @IBOutlet var awayWinIndicator: UIImageView!
 
     var game: Game! {
         didSet {
@@ -72,6 +74,16 @@ class GameTableViewCell: UITableViewCell {
         } else {
             spreadLabel.text = ""
         }
+
+        if game.status == "Final" {
+            if game.homeScore! > game.awayScore! {
+                homeWinIndicator.isHidden = false
+                awayWinIndicator.isHidden = true
+            } else if game.homeScore! < game.awayScore! {
+                homeWinIndicator.isHidden = true
+                awayWinIndicator.isHidden = false
+            }
+        }
     }
 
     func setUpNFLCell() {
@@ -104,6 +116,16 @@ class GameTableViewCell: UITableViewCell {
             }
         } else {
             spreadLabel.text = ""
+        }
+
+        if game.status == "Finished" {
+            if game.homeScore! > game.awayScore! {
+                homeWinIndicator.isHidden = false
+                awayWinIndicator.isHidden = true
+            } else if game.homeScore! < game.awayScore! {
+                homeWinIndicator.isHidden = true
+                awayWinIndicator.isHidden = false
+            }
         }
     }
 
