@@ -56,10 +56,10 @@ extension String {
 
 extension String {
     func toHalfInning() -> String {
-        if self == "A" {
-            return "Top"
-        } else {
+        if self == "B" {
             return "Bot"
+        } else {
+            return "Top"
         }
     }
 }
