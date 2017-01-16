@@ -31,6 +31,8 @@ class GameTableViewCell: UITableViewCell {
             setUpMLBCell()
         case "nfl":
             setUpNFLCell()
+        case "nba":
+            setUpNBACell()
         default: ()
         }
         setUpSpreadLabel()
@@ -61,6 +63,25 @@ class GameTableViewCell: UITableViewCell {
             homeScoreLabel.text = ""
         }
 
+        if let awayScore = game.awayScore {
+            awayScoreLabel.text = "\(awayScore)"
+        } else {
+            awayScoreLabel.text = ""
+        }
+    }
+    
+    func setUpNBACell() {
+        homeLabel.text = game.homeTeam
+        awayLabel.text = game.awayTeam
+        
+        dateLabel.text = game.date?.toGameString()
+        
+        if let homeScore = game.homeScore {
+            homeScoreLabel.text = "\(homeScore)"
+        } else {
+            homeScoreLabel.text = ""
+        }
+        
         if let awayScore = game.awayScore {
             awayScoreLabel.text = "\(awayScore)"
         } else {

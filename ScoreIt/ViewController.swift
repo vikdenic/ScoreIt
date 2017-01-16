@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet var dateLabel: UILabel!
     let refreshControl = UIRefreshControl()
 
-    var selectedSport: Sport = .mlb {
+    var selectedSport: Sport = .nba {
         didSet {
             updateDateLabel()
             retrieveGameData()
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
 
     func updateDateLabel() {
         switch selectedSport.rawValue {
-        case "mlb":
+        case "nba":
             dateLabel.text = date.toDayString()
         case "nfl":
             dateLabel.text = "Week " + String(week)
@@ -66,20 +66,19 @@ class ViewController: UIViewController {
     func refreshSetUp() {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(retrieveGameData), for: .valueChanged)
-        tableView.addSubview(refreshControl) // not required when using UITableViewController
+        tableView.addSubview(refreshControl)
     }
 
     func retrieveGameData() {
         switch selectedSport.rawValue {
-        case "mlb":
-            MLBSportsData.games(forDate: date.toAPIString()) { (games, error) in
+        case "nba":
+            NBASportsData.games(forDate: date.toAPIString(), complete: { (games, error) in
                 self.refreshControl.endRefreshing()
                 guard let games = games else {
                     print(error)
                     return
                 }
-                self.games = games
-            }
+                self.games = games            })
         case "nfl":
             NFLSportsData.games(forWeek: week, complete: { (games, error) in
                 self.refreshControl.endRefreshing()
@@ -96,7 +95,7 @@ class ViewController: UIViewController {
     @IBAction func onSegmentTapped(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            selectedSport = .mlb
+            selectedSport = .nba
         case 1:
             selectedSport = .nfl
         default: ()
@@ -105,7 +104,7 @@ class ViewController: UIViewController {
 
     @IBAction func onPreviousTapped(_ sender: UIButton) {
         switch selectedSport.rawValue {
-        case "mlb":
+        case "nba":
             date = date.yesterday()
         case "nfl":
             week -= 1
@@ -115,7 +114,7 @@ class ViewController: UIViewController {
 
     @IBAction func onNextTapped(_ sender: UIButton) {
         switch selectedSport.rawValue {
-        case "mlb":
+        case "nba":
             date = date.tomorrow()
         case "nfl":
             week += 1

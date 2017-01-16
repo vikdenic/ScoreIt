@@ -18,8 +18,9 @@
 		9399D6CF1DB50E6A00F46EC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9399D6CD1DB50E6A00F46EC0 /* Main.storyboard */; };
 		9399D6D11DB50E6A00F46EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9399D6D01DB50E6A00F46EC0 /* Assets.xcassets */; };
 		9399D6D41DB50E6A00F46EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9399D6D21DB50E6A00F46EC0 /* LaunchScreen.storyboard */; };
-		9399D6DC1DB51BB200F46EC0 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9399D6DB1DB51BB200F46EC0 /* Keys.plist */; };
 		9399D6DE1DB553F500F46EC0 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9399D6DD1DB553F500F46EC0 /* GameTableViewCell.swift */; };
+		F50FA9111E2D5111002B08C3 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = F50FA9101E2D5111002B08C3 /* Keys.plist */; };
+		F50FA9131E2D51BC002B08C3 /* NBASportsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50FA9121E2D51BC002B08C3 /* NBASportsData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +37,9 @@
 		9399D6D01DB50E6A00F46EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9399D6D31DB50E6A00F46EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9399D6D51DB50E6A00F46EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9399D6DB1DB51BB200F46EC0 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		9399D6DD1DB553F500F46EC0 /* GameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		F50FA9101E2D5111002B08C3 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Keys.plist; path = ../../Keys.plist; sourceTree = "<group>"; };
+		F50FA9121E2D51BC002B08C3 /* NBASportsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBASportsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		934C8B7A1DB68240006F64D7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F50FA9121E2D51BC002B08C3 /* NBASportsData.swift */,
 				934C8B6E1DB66021006F64D7 /* MLBSportsData.swift */,
 				934C8B781DB672CB006F64D7 /* NFLSportsData.swift */,
 			);
@@ -104,7 +107,7 @@
 				934C8B761DB6696A006F64D7 /* Cells */,
 				934C8B7A1DB68240006F64D7 /* Model */,
 				934C8B701DB66050006F64D7 /* Utilities.swift */,
-				9399D6DB1DB51BB200F46EC0 /* Keys.plist */,
+				F50FA9101E2D5111002B08C3 /* Keys.plist */,
 				9399D6D01DB50E6A00F46EC0 /* Assets.xcassets */,
 				9399D6D51DB50E6A00F46EC0 /* Info.plist */,
 				9399D6D21DB50E6A00F46EC0 /* LaunchScreen.storyboard */,
@@ -174,7 +177,7 @@
 			files = (
 				9399D6D41DB50E6A00F46EC0 /* LaunchScreen.storyboard in Resources */,
 				9399D6D11DB50E6A00F46EC0 /* Assets.xcassets in Resources */,
-				9399D6DC1DB51BB200F46EC0 /* Keys.plist in Resources */,
+				F50FA9111E2D5111002B08C3 /* Keys.plist in Resources */,
 				9399D6CF1DB50E6A00F46EC0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +197,7 @@
 				93800BD71DB5864D00F39BAD /* FavoritesTableViewController.swift in Sources */,
 				934C8B751DB66964006F64D7 /* TeamSelectionTableViewCell.swift in Sources */,
 				934C8B791DB672CB006F64D7 /* NFLSportsData.swift in Sources */,
+				F50FA9131E2D51BC002B08C3 /* NBASportsData.swift in Sources */,
 				9399D6DE1DB553F500F46EC0 /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

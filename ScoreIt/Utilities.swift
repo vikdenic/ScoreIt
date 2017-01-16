@@ -12,6 +12,7 @@ import UIKit
 enum Sport: String {
     case mlb
     case nfl
+    case nba
 }
 
 extension UIColor {
